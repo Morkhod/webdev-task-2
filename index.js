@@ -15,6 +15,12 @@ if (config.get('debug')) {
 
 app.use(bodyParser.json());
 
+
+app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+});
+
 app.use((err, req, res, next) => {
     console.error(err.stack);
 

@@ -22,5 +22,9 @@ module.exports = app => {
     app.delete('/places/:id', deleteById);
     app.put('/order/:id/:position', changeOrder);
     app.delete('/places', clear);
+    app.options('*', (req, res) => {
+        res.header('Access-Control-Allow-Headers', '*');
+        res.sendStatus(200);
+    });
     app.all('*', error404);
 };
